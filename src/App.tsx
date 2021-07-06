@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import questionsData from './questionsData'
+
+//Components
+import QuestionCard from "./Components/Question Card/QuestionCard"
+
+const TOTAL_QUESTIONS = 10;
 
 function App() {
+
+  const [ questionNumber, setQuestionNumber ] = useState(0)
+  const [ userAnswer, setUserAnswer ] = useState([])
+  const [ score, setScore ] = useState(0)
+  const [ gameOver, setGameOver ] = useState(true)
+
+  const checkAnswer = (e: React.MouseEvent) => {
+
+  }
+
+  const nextQuestion = () => {
+
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Japanese Pitch Accent Quiz</h1>
+      <QuestionCard 
+        questionNumber={questionNumber + 1} 
+        totalQuestions={TOTAL_QUESTIONS} 
+        question={questionsData[questionNumber].question} 
+        answers={questionsData[questionNumber].answers} 
+        userAnswer={ userAnswer ? userAnswer[questionNumber] : undefined}
+        callback={checkAnswer}/>
     </div>
   );
 }
