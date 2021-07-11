@@ -1,5 +1,9 @@
 import React from 'react'
 
+//Styles
+import { CardWrapper, Button, ButtonContainer } from '../../App.styles'
+import { ResultTitle } from "./ResultsCard.styles"
+
 type Props = {
     nextQuestion: () => void;
     isCorrect: boolean;
@@ -7,10 +11,12 @@ type Props = {
 
 const ResultsCard: React.FC<Props> = ({ nextQuestion, isCorrect }) => {
     return(
-        <div>
-            <p>{isCorrect ? "CORRECT!" : "INCORRECT!"}</p>
-            <button onClick={nextQuestion}>Next Question</button>
-        </div>
+        <CardWrapper margin={true}>
+            <ResultTitle correct={isCorrect}>{isCorrect ? "CORRECT!" : "INCORRECT!"}</ResultTitle>
+            <ButtonContainer>
+                <Button onClick={nextQuestion}>Next Question</Button>
+            </ButtonContainer>
+        </CardWrapper>
         
     )
 }

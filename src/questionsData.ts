@@ -19,7 +19,7 @@ const questionsData = [
         question: "What word is being said in this clip?",
         media: '',
         answers: ["石 - いし - Stone", "医師 - いし - Doctor"],
-        correctAnswer: "医師 - いし - Doctor",
+        correctAnswer: "石 - いし - Stone",
         questionNumber: 3 
     },
 

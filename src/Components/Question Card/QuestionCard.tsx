@@ -1,5 +1,9 @@
 import React from 'react'
 
+//Styles
+import { CardWrapper, Button, ButtonContainer } from '../../App.styles'
+import { FlexContainer, QuestionNumber, ScoreCounter, Question } from './Question Card.styles'
+
 type Props = {
     question: string;
     answers: string[];
@@ -12,20 +16,22 @@ type Props = {
 
 const QuestionCard: React.FC<Props> = ({ question, answers, score, userAnswer, questionNumber, totalQuestions, callback}) => {
     return (
-        <div>
-            <p className='number'> Question {questionNumber} / {totalQuestions}</p>
-            <p className='question'>{question}</p>
-            <p>Score : {score}</p>
-            <div>
+        <CardWrapper margin={true}>
+            <FlexContainer>
+                <QuestionNumber> Question {questionNumber} / {totalQuestions}</QuestionNumber>
+                <ScoreCounter>Score : {score}</ScoreCounter>
+            </FlexContainer>
+            <Question>{question}</Question>
+            <ButtonContainer>
                 {answers.map((answer) => (
                     <div>
-                        <button disabled={userAnswer} value={answer} onClick={callback} >
+                        <Button value={answer} onClick={callback} >
                             <p>{answer}</p>
-                        </button>
+                        </Button>
                     </div>
                 ))} 
-            </div>
-        </div>
+            </ButtonContainer>
+        </CardWrapper>
     )
 }
 

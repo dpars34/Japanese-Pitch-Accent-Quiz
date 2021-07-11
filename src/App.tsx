@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import questionsData from './questionsData'
 
 //Components
+import Header from './Components/Header/Header'
 import QuestionCard from './Components/Question Card/QuestionCard'
 import WelcomeCard from './Components/Welcome Card/WelcomeCard'
 import ResultsCard from './Components/Results Card/ResultsCard'
 import FinalResultsCard from './Components/Final Results Card/FinalResultsCard'
+
+//Styles
+
+import { GlobalStyle, MainTitle } from "./App.styles"
 
 const TOTAL_QUESTIONS = 10;
 
@@ -50,12 +55,22 @@ function App() {
     }
   }
 
+  const resetQuiz = () => {
+    setQuestionNumber(0)
+    setScore(0)
+    setFirstLoad(true)
+    setGameOver(false)
+    setResultsOnScreen(false)
+  }
+
   return (
+    <>
+    <GlobalStyle />
     <div className="App">
-      <h1>Japanese Pitch Accent Quiz</h1>
+      <Header />
       {firstLoad ? <WelcomeCard startQuiz={startQuiz}/>
        : resultsOnScreen ? <ResultsCard nextQuestion={nextQuestion} isCorrect={isCorrect}/>
-       : gameOver ? <FinalResultsCard/>
+       : gameOver ? <FinalResultsCard score={score} totalQuestions={TOTAL_QUESTIONS} resetQuiz={resetQuiz}/>
        : <QuestionCard 
         questionNumber={questionNumber + 1} 
         totalQuestions={TOTAL_QUESTIONS} 
@@ -65,6 +80,7 @@ function App() {
         userAnswer={ userAnswer ? userAnswer[questionNumber] : undefined}
         callback={checkAnswer}/>}
     </div>
+    </>
   );
 }
 
