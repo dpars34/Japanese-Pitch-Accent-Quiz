@@ -1,24 +1,23 @@
 import React from 'react'
 
 //Styles
-import { CardWrapper, Button, ButtonContainer, MainTitle, TextTitle, Text } from '../../App.styles'
+import { ButtonContainer, MainTitle, LinkTextWhite } from '../../App.styles'
+import { WelcomeWrapper, WelcomeButton } from './Welcome Card.styles'
 
 type Props = {
     startQuiz: () => void;
+    toAbout: () => void;
 }
 
-const WelcomeCard: React.FC<Props> = ({ startQuiz }) => {
+const WelcomeCard: React.FC<Props> = ({ startQuiz, toAbout }) => {
     return (
-        <>
-        <MainTitle>Japanese Pitch Accent Quiz</MainTitle>
-        <CardWrapper margin={false}>
-            <TextTitle>Welcome to the Japanese Pitch-Accent Quiz</TextTitle>
-            <Text>This quiz tests your ability to hear pitch accent in spoken Japanese.</Text>
+        <WelcomeWrapper>
+            <MainTitle>Japanese Pitch Accent Quiz</MainTitle>
             <ButtonContainer>
-                <Button onClick={startQuiz}>Start Quiz</Button>
+                <WelcomeButton onClick={startQuiz}>Start Quiz</WelcomeButton>
             </ButtonContainer>
-        </CardWrapper>
-        </>
+            <LinkTextWhite onClick={toAbout}>What is pitch accent?</LinkTextWhite>
+        </WelcomeWrapper>
     )
 }
 

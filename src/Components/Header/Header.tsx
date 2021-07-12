@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { HeaderWrapper, Navbar, NavLink } from './Header.styles'
+import { HeaderWrapper, Navbar, NavLink, Link } from './Header.styles'
 
 const Header = () => {
     return(
         <HeaderWrapper>
             <Navbar>
-                <NavLink>About This Quiz</NavLink>
+                <Link href="/"><NavLink>Home</NavLink></Link>
                 <NavLink>About Pitch Accent</NavLink>
             </Navbar>
         </HeaderWrapper>

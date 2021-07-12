@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import questionsData from './questionsData'
 
 //Components
-import Header from './Components/Header/Header'
+import About from './Components/About/About'
 import QuestionCard from './Components/Question Card/QuestionCard'
 import WelcomeCard from './Components/Welcome Card/WelcomeCard'
 import ResultsCard from './Components/Results Card/ResultsCard'
@@ -17,12 +17,12 @@ const TOTAL_QUESTIONS = 10;
 function App() {
 
   const [ questionNumber, setQuestionNumber ] = useState(0)
-  const [ userAnswer, setUserAnswer ] = useState([])
   const [ isCorrect, setIsCorrect ] = useState(true)
   const [ score, setScore ] = useState(0)
   const [ firstLoad, setFirstLoad ] = useState(true)
   const [ gameOver, setGameOver ] = useState(false)
   const [ resultsOnScreen, setResultsOnScreen] = useState(false)
+  const [ aboutOnScreen, setAboutOnScreen ] = useState(false)
 
   const startQuiz = () => {
     setFirstLoad(false)
@@ -61,15 +61,21 @@ function App() {
     setFirstLoad(true)
     setGameOver(false)
     setResultsOnScreen(false)
+    setAboutOnScreen(false)
+  }
+
+  const toAbout = () => {
+    setFirstLoad(false)
+    setAboutOnScreen(true)
   }
 
   return (
     <>
     <GlobalStyle />
     <div className="App">
-      <Header />
-      {firstLoad ? <WelcomeCard startQuiz={startQuiz}/>
-       : resultsOnScreen ? <ResultsCard nextQuestion={nextQuestion} isCorrect={isCorrect}/>
+      {firstLoad ? <WelcomeCard startQuiz={startQuiz} toAbout={toAbout}/>
+       : aboutOnScreen ? <About reset={resetQuiz}/>
+       : resultsOnScreen ? <ResultsCard nextQuestion={nextQuestion} isCorrect={isCorrect} explaination={questionsData[questionNumber].explaination} image={questionsData[questionNumber].image}/>
        : gameOver ? <FinalResultsCard score={score} totalQuestions={TOTAL_QUESTIONS} resetQuiz={resetQuiz}/>
        : <QuestionCard 
         questionNumber={questionNumber + 1} 
@@ -77,8 +83,8 @@ function App() {
         question={questionsData[questionNumber].question} 
         answers={questionsData[questionNumber].answers} 
         score={score}
-        userAnswer={ userAnswer ? userAnswer[questionNumber] : undefined}
-        callback={checkAnswer}/>}
+        callback={checkAnswer}
+        reset={resetQuiz}/>}
     </div>
     </>
   );

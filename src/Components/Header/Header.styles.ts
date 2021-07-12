@@ -10,7 +10,7 @@ export const Navbar = styled.div`
     width: 100%;
     display: flex;
     gap: 2rem;
-    padding-left: 10vw;
+    padding-left: 5vw;
     background-color: #9D2F2F;
 `
 
@@ -19,4 +19,9 @@ export const NavLink = styled.p`
         text-decoration: underline;
         cursor: pointer;
     }
+`
+
+export const Link = styled.a`
+    color: #F8F8F8;
+    text-decoration: none;
 `

@@ -1,20 +1,20 @@
 import React from 'react'
 
 //Styles
-import { CardWrapper, Button, ButtonContainer } from '../../App.styles'
+import { CardWrapper, Button, ButtonContainer, LinkText } from '../../App.styles'
 import { FlexContainer, QuestionNumber, ScoreCounter, Question } from './Question Card.styles'
 
 type Props = {
     question: string;
     answers: string[];
     score: number;
-    userAnswer: any;
     questionNumber: number;
     totalQuestions: number;
     callback: any;
+    reset: () => void;
 }
 
-const QuestionCard: React.FC<Props> = ({ question, answers, score, userAnswer, questionNumber, totalQuestions, callback}) => {
+const QuestionCard: React.FC<Props> = ({ question, answers, score, questionNumber, totalQuestions, callback, reset }) => {
     return (
         <CardWrapper margin={true}>
             <FlexContainer>
@@ -31,6 +31,7 @@ const QuestionCard: React.FC<Props> = ({ question, answers, score, userAnswer, q
                     </div>
                 ))} 
             </ButtonContainer>
+            <LinkText onClick={reset}>Retry Quiz</LinkText>
         </CardWrapper>
     )
 }

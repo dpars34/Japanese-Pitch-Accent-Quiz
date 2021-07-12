@@ -18,7 +18,8 @@ export const MainTitle = styled.h1`
     text-align: center;
     margin-top: 7rem;
     font-family: 'Fugaz One', cursive;
-    font-size: 2.5rem;
+    font-size: 4rem;
+    padding: 1rem;
 `
 
 export const Title = styled.h1`
@@ -28,9 +29,9 @@ export const Title = styled.h1`
 `
 
 export const CardWrapper = styled.div<{ margin: boolean }>`
-    margin: ${props => props.margin ? "7" : "3"}rem 10vw;
-    padding: 1rem 1rem 2rem 1rem;
-    background-color: #F8F8F8;
+    margin: ${props => props.margin ? "5" : "3"}rem 10vw;
+    padding: 1rem 1rem 4rem 1rem;
+    background-color: #FFFFFF;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `
@@ -61,10 +62,11 @@ const buttonHover = keyframes`
 `
 
 export const Button = styled.button`
+    font-family: 'Cabin', sans-serif;
     width: 50vw;
     color: #242424;
     align-items: center;
-    background-color: #F8F8F8;
+    background-color: #FFFFFF;
     border: solid 1px #242424;
     padding: 0.5rem;
     margin: 0.5rem 0;
@@ -79,4 +81,22 @@ export const ButtonContainer = styled.div`
     flex-direction: column;
     align-items: center;
     margin: 0 20vw;
+`
+
+export const LinkText = styled.p`
+    text-align: center;
+    color: #242424;
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+`
+
+export const LinkTextWhite = styled.p`
+    text-align: center;
+    color: #F8F8F8;
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 `
